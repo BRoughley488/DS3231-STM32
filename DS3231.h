@@ -139,6 +139,8 @@ void DS3231_check_alarms(DS3231 *dev);
 
 void DS3231_enable_sq(DS3231 *dev);
 
+void DS3231_disable_sq(DS3231 *dev);
+
 void DS3231_check_alarm_flags(DS3231 *dev);
 
 void DS3231_reset_alarm_flags(DS3231 *dev);
@@ -146,6 +148,12 @@ void DS3231_reset_alarm_flags(DS3231 *dev);
 void DS3231_check_status_register(DS3231 *dev);
 
 void DS3231_reset_OSF_flag(DS3231 *dev);
+
+void DS3231_interrupt_enable(DS3231 *dev);
+
+void DS3231_interrupt_disable(DS3231 *dev);
+
+
 /*
  * LL functions
  */

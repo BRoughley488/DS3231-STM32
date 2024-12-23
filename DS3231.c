@@ -718,9 +718,23 @@ void DS3231_LL_Change_bit(DS3231 *dev, uint8_t regAddress, uint8_t bitPos, uint8
 
 }
 
+/*
+ * Enable / disable battery backed square wave
+ *
+ * Sets if the square wave output turns on when it is under battery power
+ *
+ */
+
 void DS3231_enable_sq(DS3231 *dev){
 
 	DS3231_LL_Change_bit(&DSRTCpriv, 0x0e, 6, 1);
+
+}
+
+
+void DS3231_disable_sq(DS3231 *dev){
+
+	DS3231_LL_Change_bit(&DSRTCpriv, 0x0e, 6, 0);
 
 }
 
@@ -767,4 +781,16 @@ void DS3231_check_status_register(DS3231 *dev){
 
 void DS3231_reset_OSF_flag(DS3231 *dev){
 	DS3231_LL_Change_bit(&DSRTCpriv, reg_controlStatus, 7, 0);
+}
+
+void DS3231_interrupt_enable(DS3231 *dev){
+
+	DS3231_LL_Change_bit(&DSRTCpriv, reg_control_register, 2, 0); // enable interrupt
+
+}
+
+void DS3231_interrupt_disable(DS3231 *dev){
+
+	DS3231_LL_Change_bit(&DSRTCpriv, reg_control_register, 2, 1); // disable interrupt
+
 }
